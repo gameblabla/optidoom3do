@@ -1,8 +1,11 @@
 #include "engine_mesh.h"
 #include "engine_texture.h"
-#include "3dlib.h"
+#include "graphics.h"
 
 #include "Doom.h"
+
+#define SOLID_CEL 0x1f001f00
+#define TRANSLUCENT_CEL 0x1f811f81
 
 void updateMeshCELs(Mesh *ms)
 {

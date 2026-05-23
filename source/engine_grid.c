@@ -2,7 +2,7 @@
 #include "engine_grid.h"
 
 #include "Doom.h"
-#include "3dlib.h"
+#include "graphics.h"
 
 static Point2D *gridVertices = NULL;
 

@@ -1,5 +1,8 @@
 #include "burger.h"
 #include <stdio.h>
+#undef SEEK_SET
+#undef SEEK_CUR
+#undef SEEK_END
 #include <filestreamfunctions.h>
 
 /********************************
@@ -50,4 +53,3 @@ void **LoadAResourceHandle2(Word RezNum,Word Type)
     }
     return 0;           /* No data */
 }
-

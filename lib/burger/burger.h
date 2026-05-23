@@ -10,7 +10,7 @@
 #define __BURGER__
 
 #ifndef __TYPES_H
-#include <Types.h>
+#include <types.h>
 #endif
 
 #ifdef __cplusplus
@@ -24,7 +24,7 @@ typedef unsigned short Short;
 typedef long Frac;
 typedef long Fixed;
 typedef double extended;
-/*typedef unsigned char Boolean; */
+typedef unsigned char Boolean;
 
 /*
 typedef struct {

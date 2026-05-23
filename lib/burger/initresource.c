@@ -2,6 +2,9 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#undef SEEK_SET
+#undef SEEK_CUR
+#undef SEEK_END
 #include <FileStreamFunctions.h>
 
 #define MAXREZFILES 8
@@ -181,4 +184,3 @@ MyRezEntry2 *ScanRezMap(Word RezNum,Word Type)
     NonFatal("Resource not in map");
     return 0;           /* No good! */
 }
-
