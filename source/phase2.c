@@ -279,7 +279,7 @@ void WallPrep(Word LeftX,Word RightX,seg_t *LineSeg,angle_t LeftAngle)
 			int width;
 			
 			width = (RightX-LeftX+1);		/* Get width of opening */
-			if ( (b_floorheight > 0 && b_floorheight > f_floorheight) ||
+			if ( (b_floorheight >= 0 && b_floorheight > f_floorheight) ||
 				(f_floorheight < 0 && f_floorheight > b_floorheight) ) {
 				actionbits |= AC_BOTTOMSIL;		/* There is a mask on the bottom */
 				CurWallPtr->BottomSil = lastopening - LeftX;
