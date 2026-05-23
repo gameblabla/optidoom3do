@@ -21,6 +21,8 @@
 #define MAX_STRING_LENGTH 41
 #define NUM_FONTS 60
 
+#define SKIP_MOD_OPTIONS 1
+
 static unsigned char bitfonts[8 * NUM_FONTS] = {0,0,0,0,0,0,0,0,
 4,12,8,24,16,0,32,0,
 10,18,20,0,0,0,0,0,
@@ -369,7 +371,7 @@ static void renderModMenu()
 
 	for (i=0; i<2; ++i) {
 		setFontColor(15<<i,15<<i,15<<i);
-		drawZoomedText(64-i, 16-i, "MOD OPTIONS", 512);
+		drawZoomedText(64-i, 16-i, "SEX OPTIONS", 512);
 	}
 
 	for (i=0; i<MMOPT_NUM; ++i) {
@@ -481,9 +483,38 @@ static void getWadsDirectory()
     mmItems[MMOPT_MODS].num_values = entriesNum + 1;
 }
 
+static void applyModMenuSelections(void)
+{
+    enableFireSky = getBoolFromValue(&mmItems[MMOPT_FIRE_SKY]);
+    enableWaterFx = getBoolFromValue(&mmItems[MMOPT_WATER_FX]);
+    enableSectorColors = getBoolFromValue(&mmItems[MMOPT_SECTOR_COLORS]);
+    loadPsxSamples = getBoolFromValue(&mmItems[MMOPT_SOUND_FX]);
+    maxVisplanes = getIntFromValue(&mmItems[MMOPT_MAX_VIS]);
+    loadingFix = mmItems[MMOPT_LOADING_TYPE].selection;
+    debugMode = getBoolFromValue(&mmItems[MMOPT_DEBUG_MODE]);
+
+    wadSelected = getStringFromValue(&mmItems[MMOPT_MODS]);
+    resetMapLumpData();
+    if (wadSelected != NULL) {
+        getWadFullPath(wadSelectedFullPath, wadSelected);
+        wadSelected = wadSelectedFullPath;
+        loadSelectedWadLumpInfo(wadSelected);
+    }
+}
+
 void startModMenu()
 {
+
     initInput();
+    
+#if SKIP_MOD_OPTIONS
+    initFonts();
+	initDummyCCB();
+    getWadsDirectory();
+    applyModMenuSelections();
+    return;
+#endif
+    
     initFonts();
 	initDummyCCB();
 

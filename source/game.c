@@ -1,6 +1,10 @@
 #include "Doom.h"
 #include <String.h>
 
+#define FINAL_MAP 15
+#define SECRET_MAP 24
+#define SECRET_RETURN_MAP 4
+
 /**********************************
 
 	Prepare to load a game level
@@ -195,14 +199,14 @@ void G_RunGame(void)
 	/* decide which level to go to next */
 
 		if (gameaction == ga_secretexit) {
-			 nextmap = 24;	/* Go to the secret level */
+			 nextmap = SECRET_MAP;	/* Go to the secret level */
 		} else {
 			switch (gamemap) {
 			case 24:		/* Secret level? */
-				nextmap = 4;
+				nextmap = SECRET_RETURN_MAP;
 				break;
 			case 23:		/* Final level! */
-				nextmap = 23;
+				nextmap = FINAL_MAP;
 				break;		/* Don't add secret level to prefs */
 			default:
 				nextmap = gamemap+1;
@@ -219,7 +223,7 @@ void G_RunGame(void)
 
 	/* Run the finale if needed */
 
-		if (gamemap == 23) {
+		if (gamemap == FINAL_MAP) {
 			MiniLoop(F_Start,F_Stop,F_Ticker,F_Drawer);
 			return;		/* Exit */
 		}
