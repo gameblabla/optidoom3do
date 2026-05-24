@@ -8,6 +8,19 @@ typedef enum {
 	fin_charcast
 } final_e;
 
+
+#if 1
+static Byte *CastNames[] = {		/* Names of all the critters */
+	(Byte *)"Goomba",
+	(Byte *)"Super Goomba",
+	(Byte *)"Robot",
+	(Byte *)"Mecha Knuckles",
+	(Byte *)"Buzzer",
+	(Byte *)"Eggman",
+	(Byte *)"BRAK",
+	(Byte *)"Blaze the cat"
+};
+#else
 static Byte *CastNames[] = {		/* Names of all the critters */
 	(Byte *)"Zombieman",
 	(Byte *)"Shotgun Guy",
@@ -18,6 +31,7 @@ static Byte *CastNames[] = {		/* Names of all the critters */
 	(Byte *)"Baron of Hell",
 	(Byte *)"Our Hero"
 };
+#endif
 
 static mobjinfo_t *CastOrder[] = {	/* Pointer to the critter's base information */
 	&mobjinfo[MT_POSSESSED],
@@ -46,6 +60,23 @@ static Boolean CastonMelee;	/* Type of attack to play */
 static Word TextIndex;		/* Index to the opening text */
 static Word TextDelay;		/* Delay before next char */
 
+// BLAZE, gameblabla
+
+#if 1
+static Byte EndTextString[] =
+	"  the alternate\n"
+	"  future is saved.\n"
+	"  lost kingdoms\n"
+	"  rise again.\n"
+	"  zones and pipes\n"
+	"  return home at last\n"
+	"\n"
+	"  blaze, your\n"
+	"  paradox worked!\n"
+	"  even nega smiles...\n"
+	"  that may be odd.\n"
+	"  scariest part...";
+#else
 static Byte EndTextString[] =
 	"     id software\n"
 	"     salutes you!\n"
@@ -59,7 +90,7 @@ static Byte EndTextString[] =
 	"  best of all!\n"
 	"\n"
 	"  congratulations!";
-
+#endif
 /**********************************
 
 	Print a string in a large font.
